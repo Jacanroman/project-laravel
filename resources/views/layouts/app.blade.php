@@ -65,8 +65,8 @@
                                     <a class="dropdown-item" href="">
                                        Mi perfil
                                     </a>
-
-                                    <a class="dropdown-item" href="">
+                                    <!--añadimos la ruta aqui por ejemplo-->
+                                    <a class="dropdown-item" href="{{ route('config')}}">
                                        Configuracion
                                     </a>
                                     

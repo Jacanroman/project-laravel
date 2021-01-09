@@ -54,5 +54,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 la llamaremos configuracion
 cargamos el controlador UserController y el metodo config
 el name de la ruta config*/
-Route::get('/configuracion', 'UserController@config')
+Route::get('/configuracion', 'UserController@config')->name('config');
 

@@ -10,6 +10,6 @@ class UserController extends Controller
     public function config(){
 
         //vista
-        return view('user.config')
+        return view('user.config');
     }
 }
