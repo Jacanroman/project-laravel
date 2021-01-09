@@ -56,3 +56,5 @@ cargamos el controlador UserController y el metodo config
 el name de la ruta config*/
 Route::get('/configuracion', 'UserController@config')->name('config');
 
+/* creamos la ruta por post para editar */
+Route::post('/user/update', 'UserController@update')->name('user.update');
