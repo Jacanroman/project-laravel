@@ -58,3 +58,6 @@ Route::get('/configuracion', 'UserController@config')->name('config');
 
 /* creamos la ruta por post para editar */
 Route::post('/user/update', 'UserController@update')->name('user.update');
+
+/* Creamo la ruta para mostrar el avatar*/
+Route::get('/user/avatar/{filename}', 'UserController@getImagen')->name('user.avatar');
