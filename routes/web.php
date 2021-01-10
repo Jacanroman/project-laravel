@@ -61,3 +61,6 @@ Route::post('/user/update', 'UserController@update')->name('user.update');
 
 /* Creamo la ruta para mostrar el avatar*/
 Route::get('/user/avatar/{filename}', 'UserController@getImagen')->name('user.avatar');
+
+/*creamos la ruta para insertar imagenes*/
+Route::get('/upload-image', 'ImageController@create')->name('image.create');

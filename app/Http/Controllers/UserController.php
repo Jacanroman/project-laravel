@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+    //En el constructor llamaremos al middleware de autenticacion
+    //para moderar el contenido segun autenticacion
+    public function __construc(){
+        $this->middleware('auth');
+    }
+
     //
     public function config(){
 
