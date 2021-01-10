@@ -84,9 +84,7 @@
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
-                                @if(Auth::user()->image)
-                                    <img src="{{ route('user.avatar',['filename'=>Auth::user()->image]) }}" class="avatar" />
-                                @endif
+                                @include('includes.avatar')
                                 <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path">
 
                                 @error('image_path')
