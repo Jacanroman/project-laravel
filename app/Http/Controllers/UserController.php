@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -16,6 +18,8 @@ class UserController extends Controller
     //accion que me permita recibir los datos del formulario
     //recibira una Request y un objeto de tipo request
     public function update(Request $request){
+
+        
 
         //CONSEGUIR USUARIO IDENTIFICADO
         $user = \Auth::user();
@@ -56,6 +60,29 @@ class UserController extends Controller
         $user->surname = $surname;
         $user->nick = $nick;
         $user->email = $email;
+
+
+        //SUBIR LA IMAGEN
+        $image_path = $request->file('image_path');
+        /*
+        var_dump($image_path);
+        die();
+
+        Si es un objeto, utilizamos el storage y utilizamos el disco users 
+        para guardar la imagen dentro de users
+        */
+        if($image_path){
+            //Poner nombre unico
+            $image_path_name = time().$image_path->getClientOriginalName();
+
+            //Guardarla en la carpeta storage (storage/app/users)
+            Storage::disk('users')->put($image_path_name, File::get($image_path));
+
+            //Seteo el nombre de la imagen en el objeto
+            $user->image = $image_path_name;
+        }
+
+        
 
         //EJECUTAR CONSULTA Y CAMBIO EN LA BASE DE DATOS
         $user->update();
