@@ -6,19 +6,26 @@
         <div class="col-md-8">
             @include('includes.message')
 
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            @foreach($images as $image)
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                <div class="card pub_image">
+                    <div class="card-header">
+
+                        @if($image->user->image)
+                        <div class="container-avatar">
+                            <img src="{{ route('user.avatar',['filename'=>$image->user->image])}}" />
                         </div>
-                    @endif
+                        @endif
+                        <div class="data-user">
+                            {{$image->user->name.' '.$image->user->surname.' | '.$image->user->nick}}
+                        </div>
+                    </div>
 
-                    {{ __('You are logged in!') }}
+                    <div class="card-body">
+                       
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
