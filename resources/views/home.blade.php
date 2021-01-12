@@ -37,7 +37,12 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+
+            <!-- PAGINACION -->
+            <div class="clearfix"></div>
+                {{$images->links()}}
+            </div>
+
     </div>
 </div>
 @endsection
