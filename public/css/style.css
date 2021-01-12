@@ -20,6 +20,10 @@ form .avatar{
     height: 100%;
 }
 
+.pub_image{
+    margin-bottom: 25px;
+}
+
 .pub_image .container-avatar{
     float:left;
     margin-right: 15px;
@@ -31,3 +35,24 @@ form .avatar{
     
 }
 
+.pub_image .nickname{
+    color: gray;
+}
+
+.image-container{
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.image-container img{
+    width: 100%;
+}
+
+.pub_image .card-body{
+    padding: 0px;
+}
+
+.pub_image .description{
+    padding: 20px;
+}

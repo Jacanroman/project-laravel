@@ -17,12 +17,23 @@
                         </div>
                         @endif
                         <div class="data-user">
-                            {{$image->user->name.' '.$image->user->surname.' | '.$image->user->nick}}
+                            {{$image->user->name.' '.$image->user->surname}}
+                            <span class="nickname">
+                            {{'| '.$image->user->nick}}
+                            </span>
                         </div>
                     </div>
 
                     <div class="card-body">
-                       
+                        <div class="image-container">
+                            <img src="{{ route('image.file',['filename' => $image->image_path])}}" />
+                        </div>
+                        <div class="likes">
+                        </div>
+                        <div class="description">
+                            <span class="nickname">{{'@'.$image->user->nick}}</span>
+                            <p> {{$image->description}} </p>
+                        </div>
                     </div>
                 </div>
             @endforeach

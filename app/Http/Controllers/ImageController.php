@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Http\Response;
+
+
 //añadir el Storage y el File
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -64,7 +67,11 @@ class ImageController extends Controller
         return redirect()->route('home')->with([
             'message' => 'La foto ha sido subida correctamente'
         ]);
-
-
     }
+    //$filename es una variable que me llegara por al url
+    public function getImage($filename){
+        //con el metodo disk seleccionamos la carpeta images
+        $file = Storage::disk('images')->get($filename);
+        return new Response($file, 200);
+    } 
 }

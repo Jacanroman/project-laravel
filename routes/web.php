@@ -67,3 +67,6 @@ Route::get('/upload-image', 'ImageController@create')->name('image.create');
 
 //Creamos la ruta para guardar la imagen
 Route::post('/image/save','ImageController@save')->name('image.save');
+
+/* Creamo la ruta para mostrar la imagen*/
+Route::get('/image/file/{filename}', 'ImageController@getImage')->name('image.file');
