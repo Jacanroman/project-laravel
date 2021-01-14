@@ -70,3 +70,6 @@ Route::post('/image/save','ImageController@save')->name('image.save');
 
 /* Creamo la ruta para mostrar la imagen*/
 Route::get('/image/file/{filename}', 'ImageController@getImage')->name('image.file');
+
+// ruta para el detalle de la imagen
+Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');

@@ -31,8 +31,11 @@ form .avatar{
 
 .pub_image .data-user{
     font-weight: bold;
-    line-height: 35px;
-    
+    line-height: 35px; 
+}
+
+.pub_image .data-user a{
+    color: #444;
 }
 
 .pub_image .nickname{
