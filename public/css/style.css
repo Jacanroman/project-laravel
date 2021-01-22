@@ -48,6 +48,11 @@ form .avatar{
     overflow: hidden;
 }
 
+.image-detail{
+    width: 100%;
+    max-height: 500px;
+}
+
 .image-container img{
     width: 100%;
 }
@@ -60,6 +65,7 @@ form .avatar{
     padding: 20px;
     padding-bottom: 0px;
 }
+
 
 .pub_image .btn-comments{
     margin: 20px;
@@ -75,5 +81,9 @@ form .avatar{
 
 .likes img{
     width: 20px;
+}
+
+.pub_image .comments{
+    padding: 20px;
 }
 
