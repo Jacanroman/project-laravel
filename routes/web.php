@@ -73,3 +73,6 @@ Route::get('/image/file/{filename}', 'ImageController@getImage')->name('image.fi
 
 // ruta para el detalle de la imagen
 Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
+
+/* creamos la ruta por post para el formulario de detalle de comentarios */
+Route::post('/comment/save', 'CommentController@save')->name('comment.save');

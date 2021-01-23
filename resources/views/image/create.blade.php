@@ -19,7 +19,7 @@
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Imagen</label>
                             <div class="col-md-7">
-                                <input id="image_path" type="file" name="image_path" class="form-control" required/>
+                                <input id="image_path" type="file" name="image_path" class="form-control @error('image_path') is-invalid @enderror" />
                             
                                 @if($errors->has('image_path'))
                                     <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                         <div class="form-group row">
                             <label for="description" class="col-md-3 col-form-label text-md-right">Descripcion</label>
                             <div class="col-md-7">
-                                <textarea id="description" name="description" class="form-control" required></textarea>
+                                <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
 
                                 <!--comprobar si llegan errores desde description -->
                                 @if($errors->has('description'))

@@ -6,7 +6,7 @@
         <div class="col-md-10">
             @include('includes.message')
 
-                <div class="card pub_image card_image_detail">
+                <div class="card pub_image pub_image_detail">
                     <div class="card-header">
 
                         @if($image->user->image)
@@ -41,13 +41,21 @@
                         <div class="comments">
                             <h2>Comentarios ({{count($image->comments)}})</h2>
                             <hr>
-
-                            <form method="POST" action="">
+                            <!--Al form le añadimos la ruta para detalle de comentarios-->
+                            <form method="POST" action="{{route('comment.save')}}">
                                @csrf 
 
                                <input type="hidden" name="image_id" value="{{$image->id}}"/>
                                <p>
-                                    <textarea class="form-control" name="content" required></textarea>
+                                    <textarea class="form-control @error('content') is-invalid @enderror" name="content" ></textarea>
+                                    
+                                    <!--comprobar si llegan errores desde description -->
+                                    @if($errors->has('content'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$errors->first('content')}}</strong>
+                                        </span>
+                                    @endif
+                               
                                </p>
                                <button type="submit" class="btn btn-success">
                                 Enviar
