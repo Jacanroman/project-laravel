@@ -62,12 +62,21 @@
                                </button>
                             </form>
                                 <hr>
+                                <h2>Comentarios</h2>
                             @foreach($image->comments as $comment)
                                 <div class="comment">
-                                    <h2>Comentarios</h2>
+                                    
                                     <span class="nickname">{{'@'.$comment->user->nick}}</span>
                                     <span class="nickname date">{{' | '.\FormatTime::LongTimeFilter($comment->created_at)}}</span>
                                     <p> {{$comment->content}} </p>
+                                    <!--Ponemos un condicional que hace que el boton aparezca si estamos
+                                identificados y el usuario sea el dueño de la imagen o el comentario-->
+
+                                @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                    <a class="btn btn-sm btn-danger" href="{{route('comment.delete',['id' =>$comment->id])}}">
+                                        Eliminar
+                                    </a>
+                                @endif
                                 </div>
                             @endforeach
 

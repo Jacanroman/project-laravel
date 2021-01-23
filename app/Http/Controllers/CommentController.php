@@ -44,6 +44,32 @@ class CommentController extends Controller
                             ->with([
                                 "message" => 'Has publicado tu comentario correctamente'
                             ]);
-        
+    }
+
+    public function delete($id){
+
+        //Conseguir datos del usuario identificado
+        $user = \Auth::user();
+
+        //Conseguir objeto del comentario
+        $comment = Comment::find($id);
+
+        //Comprobar si soy el dueño del comentario o de la publicacion
+        if($user && ($comment->user_id == $user->id || $comment->image->user_id == $user->id)){
+            //Borrar un objeto con el ORM
+            $comment->delete();
+
+             //Redireccion
+            return redirect()->route('image.detail',['id'=>$comment->image->id])
+            ->with([
+                "message" => 'Comentario Eliminado correctamente'
+            ]);
+        }else{
+             //Redireccion
+             return redirect()->route('image.detail',['id'=>$comment->image->id])
+             ->with([
+                 "message" => 'El comentario no se ha eliminado!!!!!'
+             ]);
+        }
     }
 }

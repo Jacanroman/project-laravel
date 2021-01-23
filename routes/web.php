@@ -76,3 +76,6 @@ Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
 
 /* creamos la ruta por post para el formulario de detalle de comentarios */
 Route::post('/comment/save', 'CommentController@save')->name('comment.save');
+
+// ruta para la eliminacion de un comentario
+Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
