@@ -79,3 +79,9 @@ Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 
 // ruta para la eliminacion de un comentario
 Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
+
+//Ruta para dar likes
+Route::get('/like/{image_id}', 'LikeController@like')->name('like.save');
+
+//Dislike (borrar like)
+Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete');
