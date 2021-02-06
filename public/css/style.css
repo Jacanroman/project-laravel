@@ -87,3 +87,8 @@ form .avatar{
     padding: 20px;
 }
 
+.number_likes{
+    color: gray;
+    font-size: 11px;
+}
+
