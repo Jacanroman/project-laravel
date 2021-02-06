@@ -88,3 +88,7 @@ Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete')
 
 //Ruta para likes
 Route::get('/likes','LikeController@index')->name('likes');
+
+//Ruta profile
+
+Route::get('/perfil/{id}','UserController@profile')->name('profile');
