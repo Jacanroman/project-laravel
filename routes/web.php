@@ -94,3 +94,6 @@ Route::get('/perfil/{id}','UserController@profile')->name('profile');
 
 // ruta para la eliminacion de una imagen
 Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete');
+
+//Ruta para la actualizacion de una imagen
+Route::get('/image/editar/{id}','ImageController@edit')->name('image.edit');

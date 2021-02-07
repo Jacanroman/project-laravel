@@ -129,4 +129,28 @@ class ImageController extends Controller
         //redireccionamos
         return redirect()->route('home')->with($message);
     }
+
+    //metodo para editar imagenes
+    public function edit($id){
+        
+        //Conseguir el objeto del usuario identificado
+        $user=\Auth::user();
+
+        //Conseguir el objeto de la imagen  
+        $image = Image::find($id);
+
+        //Comprobar si existe user e imagen
+
+        if($user && $image && $image->user->id == $user->id){
+
+        //vista
+            return view('image.edit', [
+                'image' => $image 
+            ]);
+        
+        }else{
+            return redirect()->route('home');
+        }
+
+    }
 }
