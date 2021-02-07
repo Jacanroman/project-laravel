@@ -90,5 +90,7 @@ Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete')
 Route::get('/likes','LikeController@index')->name('likes');
 
 //Ruta profile
-
 Route::get('/perfil/{id}','UserController@profile')->name('profile');
+
+// ruta para la eliminacion de una imagen
+Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete');

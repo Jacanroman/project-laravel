@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\File;
 //utilizar el modelo de imagen
 use App\Image;
 
+//Cargar los modelos de Comentario y likes;
+use App\Comment;
+use App\Like;
+
 class ImageController extends Controller
 {
     //Restringimos el acceso con el middleware
@@ -81,5 +85,48 @@ class ImageController extends Controller
         return view('image.detail',[
             'image' => $image,
         ]);
+    }
+
+    //metodo para borrar imagenes
+    public function delete($id){
+        //conseguir objeto del usuario identificado.
+        $user = \Auth::user();
+        //conseguir el objeto de la imagen
+        $image = Image::find($id);
+        //Conseguir los comentarios y los likes asociados a la imagen
+        //sacarlos para eliminarlos antes que eliminar la imagen.
+        $comments = Comment::where('image_id', $id)->get();
+        $likes = Like::where('image_id', $id)->get();
+
+
+        //condicion para ver si es el dueno
+        if($user && $image && $image->user->id == $user->id){
+            //Eliminar comentarios
+            if($comments && count($comments) >=1){
+                foreach($comments as $comment){
+                    $comment->delete();
+                }
+            }
+
+            //Eliminar los likes
+            if($likes && count($likes)>=1){
+                foreach($likes as $like){
+                    $like->delete();
+                }
+            }
+
+            //Eliminar ficheros de imagen
+            Storage::disk('images')->delete($image->image_path);
+
+            //Eliminar el registro de la imagen
+            $image->delete();
+            $message = array('message'=>'La imagen se ha borrado correctamente');
+
+        }else{
+            $message = array('message'=>'La imagen no se ha borrado correctamente');
+        }
+
+        //redireccionamos
+        return redirect()->route('home')->with($message);
     }
 }
