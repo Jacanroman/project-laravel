@@ -13,9 +13,10 @@
 
                 <div class="card-body">
 
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('image.update')}}" enctype="multipart/form-data">
                         @csrf
 
+                        <input type="hidden" name="image_id" value="{{$image->id}}" />
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Imagen</label>
                             <div class="col-md-7">
@@ -23,7 +24,7 @@
                                 @if($image->user->image)
                
                                     <div class="image-container image-detail">
-                                        <img src="{{ route('image.file',['filename' => $image->image_path])}}" />
+                                        <img src="{{ route('image.file',['filename' => $image->image_path])}}" class="avatar" />
                                     </div>
                                 @endif
 
