@@ -45,11 +45,12 @@ Route::get('/', function () {
 });
 
 
-
+//GENERALES
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+//RUTAS USUARIOS
 /*Creamos la ruta de la configuracion de usuario
 la llamaremos configuracion
 cargamos el controlador UserController y el metodo config
@@ -61,6 +62,16 @@ Route::post('/user/update', 'UserController@update')->name('user.update');
 
 /* Creamo la ruta para mostrar el avatar*/
 Route::get('/user/avatar/{filename}', 'UserController@getImagen')->name('user.avatar');
+
+//Ruta profile
+Route::get('/perfil/{id}','UserController@profile')->name('profile');
+
+//Ruta para gente
+Route::get('/gente/{search?}','UserController@index')->name('user.index');
+
+
+
+//RUTAS DE IMAGEN
 
 /*creamos la ruta para insertar imagenes (formulario para introducir)*/
 Route::get('/upload-image', 'ImageController@create')->name('image.create');
@@ -74,24 +85,6 @@ Route::get('/image/file/{filename}', 'ImageController@getImage')->name('image.fi
 // ruta para el detalle de la imagen
 Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
 
-/* creamos la ruta por post para el formulario de detalle de comentarios */
-Route::post('/comment/save', 'CommentController@save')->name('comment.save');
-
-// ruta para la eliminacion de un comentario
-Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
-
-//Ruta para dar likes
-Route::get('/like/{image_id}', 'LikeController@like')->name('like.save');
-
-//Dislike (borrar like)
-Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete');
-
-//Ruta para likes
-Route::get('/likes','LikeController@index')->name('likes');
-
-//Ruta profile
-Route::get('/perfil/{id}','UserController@profile')->name('profile');
-
 // ruta para la eliminacion de una imagen
 Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete');
 
@@ -101,6 +94,26 @@ Route::get('/image/editar/{id}','ImageController@edit')->name('image.edit');
 //Ruta para actualizar la imagen
 Route::post('/image/update', 'ImageController@update')->name('image.update');
 
-//Ruta para gente
-Route::get('/gente','UserController@index')->name('user.index');
+
+
+//RUTAS COMMENTARIO
+/* creamos la ruta por post para el formulario de detalle de comentarios */
+Route::post('/comment/save', 'CommentController@save')->name('comment.save');
+// ruta para la eliminacion de un comentario
+Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
+
+
+
+//RUTAS DE LIKES
+//Ruta para dar likes
+Route::get('/like/{image_id}', 'LikeController@like')->name('like.save');
+
+//Dislike (borrar like)
+Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete');
+
+//Ruta para likes
+Route::get('/likes','LikeController@index')->name('likes');
+
+
+
 
