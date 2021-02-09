@@ -101,3 +101,6 @@ Route::get('/image/editar/{id}','ImageController@edit')->name('image.edit');
 //Ruta para actualizar la imagen
 Route::post('/image/update', 'ImageController@update')->name('image.update');
 
+//Ruta para gente
+Route::get('/gente','UserController@index')->name('user.index');
+

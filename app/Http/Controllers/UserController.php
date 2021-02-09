@@ -16,6 +16,13 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+        $users = User::orderBy('id','desc')->paginate(5);
+
+        //vista
+        return view('user.index',['users'=>$users]);
+    }
+
     //
     public function config(){
 
@@ -113,4 +120,6 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+   
 }
